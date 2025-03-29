@@ -31,7 +31,6 @@ The Crop Recommendation System is a machine learning-based web application that 
 1. Clone the repository:
    ```bash
    git clone (https://github.com/shreesriv12/crop-prediction-model.git)
-   cd crop-recommendation
    ```
 2. Install dependencies:
    ```bash
