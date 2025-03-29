@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Prediction Model</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='farm.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arimo', sans-serif;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+            width: 90%;
+            max-width: 900px;
+        }
+        h1 {
+            font-family: 'Pacifico', cursive;
+            margin-bottom: 20px;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            box-sizing: border-box;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            box-sizing: border-box;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #predi {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        @media (max-width: 600px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Crop Prediction Model</h1>
+        <form action="{{ url_for('predict') }}" method="post">
+            <input type="text" name="Nitrogen" placeholder="Nitrogen" required>
+            <input type="text" name="Phosphorus" placeholder="Phosphorus" required>
+            <input type="text" name="Potassium" placeholder="Potassium" required>
+            <input type="text" name="temperature" placeholder="Temperature" required>
+            <input type="text" name="humidity" placeholder="Humidity" required>
+            <input type="text" name="pH" placeholder="pH" required>
+            <input type="text" name="rainfall" placeholder="Rainfall" required>
+            <div class="button-container">
+                <button type="submit">Predict</button>
+            </div>
+        </form>
+        <div id="predi">{{ prediction_text }}</div>
+    </div>
+</body>
+</html>
